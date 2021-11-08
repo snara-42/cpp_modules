@@ -6,7 +6,7 @@
 #    By: snara </var/mail/snara>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 13:28:17 by snara             #+#    #+#              #
-#    Updated: 2021/11/04 23:32:55 by snara            ###   ########.fr        #
+#    Updated: 2021/11/08 13:57:50 by snara            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(NAME)	: $(OBJS)
 
 .PHONY	: debug
 debug	: CXXFLAGS += -g -fsanitize=address ## Add debug options
-debug	: all 
+debug	: all
 
 .PHONY	: clean
 clean	: ## Delete objects and dependencies
@@ -45,6 +45,7 @@ re		: fclean all ## Rebuild executable
 
 .PHONY	: test
 test	: $(NAME) ## Run tests
+	@make re -s
 	./$(NAME)
 	./$(NAME) ''
 	./$(NAME) "shhhhh... I think the students are asleep..."
