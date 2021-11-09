@@ -1,5 +1,10 @@
 *~
-.*
+*
+!Makefile
+!*.cpp
+!*.hpp
+!*.c
+!*.h
 !.gitignore
 LICENCE
 
