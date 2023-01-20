@@ -37,15 +37,16 @@ std::string Span::to_string() const
 	sst // << "[" << this << "] "
 		<< "Span(size: " << this->_set.size()
 		<< ", cap: " << this->max_size();
-		(this->_set.size() >= 2
-		 ? sst << ", short: " << this->shortestSpan() << ", long: " << this->longestSpan() << ")"
-		 : sst << ", no span)");
-	sst << " [";
-	for (std::multiset<int>::iterator it = _set.begin(); it != _set.end(); ++it)
+	(this->_set.size() >= 2
+	 ? sst << ", short: " << this->shortestSpan() << ", long: " << this->longestSpan() << ")"
+	 : sst << ", no span)");
+	if (this->size() < 10)
 	{
-		sst << " " << *it << ",";
+		sst << " [";
+		for (std::multiset<int>::iterator it = _set.begin(); it != _set.end(); ++it)
+			sst << " " << *it;
+		sst << " ]";
 	}
-	sst << "]";
 	return sst.str();
 }
 

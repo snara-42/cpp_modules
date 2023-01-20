@@ -11,7 +11,7 @@
 
 #include "mutantstack.hpp"
 
-void	test_subject()
+void	test()
 {
 	MutantStack<int> mstack;
 
@@ -40,25 +40,24 @@ void	test_subject()
 	std::cout << std::endl;
 	std::cout << mstack << std::endl;
 	std::stack<int> s(mstack);
+	std::cout << std::endl;
 }
 
 template<class Cont>
-void	test_subject_()
+void	test_subject_mstack()
 {
 	MutantStack<int, Cont> c;
 	c.push(5);
 	c.push(17);
-	std::cout << c.top() << std::endl;
+	std::cout << "top:" << c.top() << std::endl;
 	c.pop();
-	std::cout << c.size() << std::endl;
+	std::cout << "size:" << c.size() << std::endl;
 	c.push(3);
 	c.push(5);
 	c.push(737);
-	//[...]
 	c.push(0);
 
-	typename MutantStack<int, Cont>::iterator it = c.begin();
-	typename MutantStack<int, Cont>::iterator ite = c.end();
+	typename MutantStack<int, Cont>::iterator it = c.begin(), ite = c.end();
 	++it;
 	--it;
 	while (it != ite)
@@ -66,6 +65,32 @@ void	test_subject_()
 		std::cout << *it << " ";
 		++it;
 	}
+	std::cout << std::endl;
+	std::cout << std::endl;
+}
+template<class Cont>
+void	test_subject_cont()
+{
+	Cont c;
+	c.push_back(5);
+	c.push_back(17);
+	std::cout << "front:" << c.front() << std::endl;
+	c.pop_back();
+	std::cout << "size:" << c.size() << std::endl;
+	c.push_back(3);
+	c.push_back(5);
+	c.push_back(737);
+	c.push_back(0);
+
+	typename Cont::iterator it = c.begin(), ite = c.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << " ";
+		++it;
+	}
+	std::cout << std::endl;
 	std::cout << std::endl;
 }
 
@@ -75,7 +100,7 @@ void	test_uint(unsigned N)
 	for (unsigned i = 0; i <= N; ++i)
 		s.push(i);
 	s.pop();
-	std::cout << s << " " << s.top() << std::endl;
+	std::cout << s << std::endl;
 }
 
 void	test_str(unsigned N)
@@ -84,7 +109,7 @@ void	test_str(unsigned N)
 	for (unsigned i = 0; i <= N; ++i)
 		s.push("str" + std::to_string(i));
 	s.pop();
-	std::cout << s << " " << s.top() << std::endl;
+	std::cout << s << std::endl;
 }
 
 void	test_double(unsigned N)
@@ -92,13 +117,21 @@ void	test_double(unsigned N)
 	MutantStack<double, std::vector<double> > s;
 	for (unsigned i = 1; i <= N; ++i)
 		s.push(1.0 / i);
-	std::cout << s << " " << s.top() << std::endl;
+	std::cout << s << std::endl;
 }
 
 int main()
 {
-	test_subject();
-	test_subject_<std::list<int> >();
+	test();
+
+	test_subject_mstack<std::vector<int> >();
+	test_subject_mstack<std::deque<int> >();
+	test_subject_mstack<std::list<int> >();
+
+	test_subject_cont<std::vector<int> >();
+	test_subject_cont<std::deque<int> >();
+	test_subject_cont<std::list<int> >();
+
 	std::srand(std::time(NULL));
 
 	std::cout << std::endl << "deque<unsigned>" << std::endl;

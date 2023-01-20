@@ -10,7 +10,7 @@
 #include <iostream>
 #include "easyfind.hpp"
 
-template<typename Container>
+template <typename Container>
 bool	test(Container& c, int n)
 {
 	std::cout << "[";

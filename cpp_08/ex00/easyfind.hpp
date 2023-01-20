@@ -5,7 +5,7 @@
 #include <iterator>
 
 template<typename T>
-typename T::iterator easyfind(T& t, const int val)
+typename T::iterator easyfind(T& t, int val)
 {
 	typename T::iterator it = std::find(t.begin(), t.end(), val);
 	if (it == t.end())
@@ -14,7 +14,7 @@ typename T::iterator easyfind(T& t, const int val)
 }
 
 template<typename T>
-typename T::const_iterator easyfind(const T& t, const int val)
+typename T::const_iterator easyfind(const T& t, int val)
 {
 	typename T::const_iterator it = std::find(t.begin(), t.end(), val);
 	if (it == t.end())
