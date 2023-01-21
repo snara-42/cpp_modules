@@ -6,12 +6,12 @@
 #    By: snara </var/mail/snara>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 13:28:17 by snara             #+#    #+#              #
-#    Updated: 2021/12/02 14:36:30 by snara            ###   ########.fr        #
+#    Updated: 2023/01/21 13:49:31 by subaru           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= exe
-SRCS 	:= main.cpp mutantstack.cpp
+SRCS 	:= main.cpp 
 
 TESTFILE:= 
 INCS	:= -I./
