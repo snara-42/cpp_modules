@@ -7,7 +7,7 @@
 #include <stack>
 #include <deque>
 
-template <class T, class Container = std::deque<T> >
+template <typename T, typename Container = std::deque<T> >
 class MutantStack: public std::stack<T, Container>
 {
 private:
@@ -80,7 +80,7 @@ public:
 
 };
 
-template<typename T, class Container>
+template<typename T, typename Container>
 std::ostream &operator<<(std::ostream &ost, MutantStack<T, Container> const &rhs)
 {
 	ost << rhs.to_string();
